@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shop/src/models/class/cart.dart';
 import 'package:shop/src/models/class/product_list.dart';
+import 'package:shop/src/utils/routes/app_routes.dart';
 import 'package:shop/src/view/widgets/contador_badge.dart';
 import 'package:shop/src/view/widgets/product_grid.dart';
 
@@ -56,12 +57,15 @@ class _ProductsoverviewPageState extends State<ProductsoverviewPage> {
             },
             ),
             Consumer<Cart>(
-              builder: (context, cart, child) => CountBadge(
-                value: cart.itemsCount.toString(),
-                child: IconButton(
-                  onPressed: () {},
+              child:IconButton(
+                  onPressed: () {
+                    Navigator.of(context).pushNamed(AppRoutes.CART);
+                  },
                   icon: Icon(Icons.shopping_cart)
                 ),
+              builder: (context, cart, child) => CountBadge(
+                value: cart.itemsCount.toString(),
+                child: child!
                 
               ),
             )
