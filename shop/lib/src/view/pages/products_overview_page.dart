@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shop/src/models/class/cart.dart';
 import 'package:shop/src/models/class/product_list.dart';
+import 'package:shop/src/view/widgets/contador_badge.dart';
 import 'package:shop/src/view/widgets/product_grid.dart';
 
 
@@ -52,6 +54,16 @@ class _ProductsoverviewPageState extends State<ProductsoverviewPage> {
               });
               
             },
+            ),
+            Consumer<Cart>(
+              builder: (context, cart, child) => CountBadge(
+                value: cart.itemsCount.toString(),
+                child: IconButton(
+                  onPressed: () {},
+                  icon: Icon(Icons.shopping_cart)
+                ),
+                
+              ),
             )
         ],
       ),
