@@ -22,39 +22,40 @@ class CartPage extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.all(10),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-              Text(
-                'Total:',
-                style: TextStyle(fontSize: 20),
-              ),
-              SizedBox(width: 10,),
-              Chip(
-                  backgroundColor: Theme.of(context).primaryColor,
-                  label: Text('R\$${cart.totalAmount}',
-                      style: TextStyle(
-                          color: Theme.of(context)
-                              .primaryTextTheme
-                              .headline6
-                              ?.color))),
-              Spacer(),
-              TextButton(
-                onPressed: (){},
-                child: Text('COMPRA'),
-                style: TextButton.styleFrom(
-                  textStyle: TextStyle(
-                    color: Theme.of(context).primaryColor,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'Total:',
+                    style: TextStyle(fontSize: 20),
+                  ),
+                  SizedBox(
+                    width: 10,
+                  ),
+                  Chip(
+                      backgroundColor: Theme.of(context).primaryColor,
+                      label: Text('R\$${cart.totalAmount}',
+                          style: TextStyle(
+                              color: Theme.of(context)
+                                  .primaryTextTheme
+                                  .headline6
+                                  ?.color))),
+                  Spacer(),
+                  TextButton(
+                    onPressed: () {},
+                    child: Text('COMPRA'),
+                    style: TextButton.styleFrom(
+                        textStyle: TextStyle(
+                      color: Theme.of(context).primaryColor,
+                    )),
                   )
-                ),)
-            ]),
+                ]),
           ),
         ),
         Expanded(
-          child: ListView.builder(
-            itemCount: prod.length,
-            itemBuilder: (context, index) => CartItemWidget(cartItem: prod[index])
-            )
-        )
+            child: ListView.builder(
+                itemCount: prod.length,
+                itemBuilder: (context, index) =>
+                    CartItemWidget(cartItem: prod[index])))
       ]),
     );
   }
