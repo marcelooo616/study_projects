@@ -5,6 +5,7 @@ import 'package:shop/src/models/class/order_list.dart';
 import 'package:shop/src/models/class/product_list.dart';
 import 'package:shop/src/utils/routes/app_routes.dart';
 import 'package:shop/src/view/pages/cart_page.dart';
+import 'package:shop/src/view/pages/orders_page.dart';
 import 'package:shop/src/view/pages/product_detail_page.dart';
 import 'package:shop/src/view/pages/products_overview_page.dart';
 
@@ -13,7 +14,7 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  const MyApp({Key? key}) : super(key: key);
 
   // This widget is the root of your application.
   @override
@@ -34,8 +35,11 @@ class MyApp extends StatelessWidget {
         ),
         home:  ProductsoverviewPage(),
         routes: {
+          AppRoutes.HOME: (context) => ProductsoverviewPage(),
           AppRoutes.PRODUCT_DETAIL: (context) => ProductDetailPage(),
           AppRoutes.CART: (context) => CartPage(),
+          AppRoutes.ORDERS: (context) => OrdersPage(),
+          
         },
       ),
     );

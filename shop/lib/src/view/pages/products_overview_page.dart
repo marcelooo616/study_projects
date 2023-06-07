@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:shop/src/models/class/cart.dart';
 import 'package:shop/src/models/class/product_list.dart';
 import 'package:shop/src/utils/routes/app_routes.dart';
+import 'package:shop/src/view/widgets/app_drawer.dart';
 import 'package:shop/src/view/widgets/contador_badge.dart';
 import 'package:shop/src/view/widgets/product_grid.dart';
 
@@ -72,6 +73,7 @@ class _ProductsoverviewPageState extends State<ProductsoverviewPage> {
         ],
       ),
       body:  ProductGrid(showFavoriteOnly:_showFavoriteOnly ),
+      drawer: AppDrawer(),
     );
   }
 }
