@@ -43,6 +43,11 @@ class _ProductFormPageState extends State<ProductFormPage> {
   }
 
   void _submitForm(){
+    final isValid = _formKey.currentState?.validate() ?? false;
+
+    if(!isValid){
+      return;
+    }
     _formKey.currentState?.save();
     final newProduct = Product(
         id: Random().nextDouble().toString(),
@@ -52,7 +57,7 @@ class _ProductFormPageState extends State<ProductFormPage> {
         imageUrl: _formData['imageUrl'] as String,
     );
 
-    
+
   }
 
   @override
@@ -78,6 +83,16 @@ class _ProductFormPageState extends State<ProductFormPage> {
                   FocusScope.of(context).requestFocus(_priceFocus);
                 },
                 onSaved: (name) => _formData['name'] = name ?? '',
+                validator: (_name){
+                  final name = _name ?? '';
+                  if(name.trim().isEmpty){
+                    return 'Nome e obrigatorio';
+                  }
+                  if(name.trim().length < 3 ){
+                    return 'Nome precisa no minimo de 3 letras';
+                  }
+                  return null;
+                },
               ),
               TextFormField(
                 decoration: InputDecoration(labelText: 'Preço'),
